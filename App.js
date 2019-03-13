@@ -1,49 +1,53 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Button, View } from 'react-native';
+import Home from './src/HomeScreen';
+import Exercise5 from './src/Exercise5';
+import Exercise6 from './src/Exercise6';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+export default class App extends Component {
+  state = { exerciseShown: null }
 
-type Props = {};
-export default class App extends Component<Props> {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+    switch (this.state.exerciseShown) {
+      case 5:
+        return (
+          <View style={styles.container}>
+            <Button
+              title="Back"
+              onPress={() => this.setState({ exerciseShown: null })}
+            />
+            <Exercise5 />
+          </View>
+        );
+      case 6:
+        return (
+          <View style={styles.container}>
+            <Button
+              title="Back"
+              onPress={() => this.setState({ exerciseShown: null })}
+            />
+            <Exercise6 />
+          </View>
+        );
+      default:
+        return (
+          <View style={styles.container}>
+            <Button
+              title="Exercise 5"
+              onPress={() => this.setState({ exerciseShown: 5 })}
+            />
+            <Button
+              title="Exercise 6"
+              onPress={() => this.setState({ exerciseShown: 6 })}
+            />
+          </View>
+        );
+    }
   }
 }
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginTop: 40,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+};

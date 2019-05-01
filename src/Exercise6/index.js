@@ -14,7 +14,7 @@ export default class Exercise6 extends React.Component {
     api
       .get('widgets')
       .then(response => {
-        this.setState({ widgets: response.data.data });
+        this.setState({ widgets: response.data });
       })
       .catch(console.error);
   }
@@ -35,16 +35,11 @@ export default class Exercise6 extends React.Component {
 
     let newWidgets;
     if (editingIndex === -1) {
-      const requestBody = {
-        data: {
-          type: 'widgets',
-          attributes: { name },
-        },
-      };
+      const requestBody = { name };
       api
         .post('widgets', requestBody)
         .then(response => {
-          const widget = response.data.data;
+          const widget = response.data;
           newWidgets = [...widgets, widget];
           this.setState({
             widgets: newWidgets,
@@ -55,19 +50,13 @@ export default class Exercise6 extends React.Component {
         .catch(console.error);
     } else {
       const { id } = widgets[editingIndex];
-      const requestBody = {
-        data: {
-          type: 'widgets',
-          id,
-          attributes: { name },
-        },
-      };
+      const requestBody = { name };
 
       api
         .patch(`widgets/${id}`, requestBody)
         .then(() => {
           newWidgets = widgets.slice();
-          newWidgets[editingIndex].attributes.name = name;
+          newWidgets[editingIndex].name = name;
 
           this.setState({
             widgets: newWidgets,
@@ -105,7 +94,7 @@ export default class Exercise6 extends React.Component {
   render() {
     const { widgets, showModal, editingIndex } = this.state;
     const editingName =
-      editingIndex === -1 ? '' : widgets[editingIndex].attributes.name;
+      editingIndex === -1 ? '' : widgets[editingIndex].name;
 
     return (
       <View>
@@ -127,7 +116,7 @@ export default class Exercise6 extends React.Component {
           keyExtractor={item => item.id}
           renderItem={({ item, index }) => (
             <Button
-              title={item.attributes.name}
+              title={item.name}
               onPress={() => this.edit(index)}
             />
           )}

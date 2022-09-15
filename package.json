@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "lint": "eslint ."
   },
   "dependencies": {
     "expo": "~46.0.9",
@@ -17,11 +18,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@react-native-community/eslint-config": "^3.1.0",
     "@testing-library/jest-native": "^4.0.12",
     "@testing-library/react-native": "^11.0.0",
     "@types/jest": "^29.0.2",
+    "eslint": "^7.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-testing-library": "^5.7.2",
     "jest": "^26",
-    "jest-expo": "^46.0.1"
+    "jest-expo": "^46.0.1",
+    "prettier": "^2.7.1"
   },
   "private": true,
   "jest": {

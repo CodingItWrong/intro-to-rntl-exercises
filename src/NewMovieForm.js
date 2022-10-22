@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
+    justifyContent: 'center',
     marginLeft: 10,
     padding: 5,
   },

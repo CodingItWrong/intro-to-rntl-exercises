@@ -4,7 +4,7 @@ In this exercise, we are going to add tests for the `MovieRow` component found i
 
 This component is already written and functioning. There is a test file for it, `src/MovieRow.spec.js`, but it does not yet contain any tests.
 
-Add all the tests to `src/MovieRow.spec.js` that you need to fully specify the component's behavior.
+Add all the tests to `src/MovieRow.spec.js` that you need to fully specify the component's behavior. Feel free to modify the component as necessary to help you write better tests for it.
 
 ## About the Component
 

@@ -5,7 +5,14 @@ export default function MovieRow({movie}) {
   return (
     <View style={styles.row}>
       <Text style={styles.title}>{movie.title}</Text>
-      {movie.addedToday && <New fill="orange" width="30" height="30" />}
+      {movie.addedToday && (
+        <New
+          fill="orange"
+          width="30"
+          height="30"
+          accessibilityLabel="Added Today"
+        />
+      )}
     </View>
   );
 }
